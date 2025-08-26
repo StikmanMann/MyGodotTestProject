@@ -26,6 +26,8 @@ const PITCH_LIMIT_deg  := 70.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_on_floor: bool = false
+var attempt_pickup: bool =false
+var attempt_interact: bool =false
 
 signal change_mouse_mode
 
@@ -123,13 +125,16 @@ func _physics_process(delta: float) -> void:
 		is_on_floor = _is_on_floor()
 		_apply_look(input_sync.look_delta)
 		# Server has consumed this frame's mouse input -> clear it to prevent drift
-		input_sync.look_delta = Vector2.ZERO
+		#input_sync.look_delta = Vector2.ZERO
 		_apply_movement(input_sync.movement_input, delta)
-		if input_sync.attempt_pickup: 
+		if attempt_pickup:
+			print("attempt pickup: %s" % attempt_pickup) 
+			attempt_pickup = false
 			pickup_mp.pickup()
-			input_sync.attempt_pickup = false
-		if input_sync.attempt_interact:
-			input_sync.attempt_interact = false
+			
+		if attempt_interact:
+			print("attempt interact: %s" % attempt_interact)
+			attempt_interact = false
 			interact_mp._interact()
 
 	# Optional client-side prediction. Uncomment if you want even snappier movement:

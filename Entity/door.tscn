@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yrqr4"]
-properties/0/path = NodePath(".:is_open")
+properties/0/path = NodePath("DoorHinge:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 

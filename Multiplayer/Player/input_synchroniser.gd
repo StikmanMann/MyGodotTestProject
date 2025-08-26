@@ -6,8 +6,7 @@ extends MultiplayerSynchronizer
 var movement_input: Vector2 = Vector2.ZERO   # (x=strafe, y=forward)
 var look_delta: Vector2 = Vector2.ZERO       # accumulated mouse delta since last physics tick
 var jumping: bool = false
-var attempt_pickup: bool =false
-var attempt_interact: bool =false
+
 
 func _ready() -> void:
 	# Only the local authority should read real inputs.
@@ -25,10 +24,13 @@ func _process(_delta: float) -> void:
 	look_delta = Vector2.ZERO
 	jumping = Input.is_action_pressed("jump")
 	if Input.is_action_just_pressed("interact"):
-		attempt_pickup = true
-		attempt_interact = true
+		_interact.rpc()
+
+	
 
 func _input(event: InputEvent) -> void:
+	
+		
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
 		return
 	# Local: accumulate raw mouse motion (compact, not whole events)
@@ -38,3 +40,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_ESCAPE and event.is_pressed():
 			player_rigidbody_mp.change_mouse_mode.emit()
+
+@rpc("call_local")
+func _interact():
+	if multiplayer.is_server():
+		player_rigidbody_mp.attempt_pickup = true
+		player_rigidbody_mp.attempt_interact = true

@@ -9,5 +9,5 @@ func _interact() -> void:
 		var obj = interact_ray.get_collider()
 		print(obj)
 		if obj is Interactable:
-			#print("Jetzt  ist es ezit")
+			print("Jetzt ist es ezit")
 			obj.player_interact.emit()
