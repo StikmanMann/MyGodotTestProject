@@ -19,8 +19,8 @@ func open_door():
 	door_interact.emit()
 	if is_open:
 		is_open = false
-		animation_player.play("door_open")
+		animation_player.play_backwards("door_open")
 	else:
 		is_open = true
-		animation_player.play_backwards("door_open")
+		animation_player.play("door_open")
 	print("Opening")
