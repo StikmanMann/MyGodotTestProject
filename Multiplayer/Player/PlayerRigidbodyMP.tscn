@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr4h88t048e0x"]
+[gd_scene load_steps=12 format=3 uid="uid://dr4h88t048e0x"]
 
 [ext_resource type="Script" uid="uid://d2v6obbu0iftg" path="res://Multiplayer/Player/player_rigidbody_mp.gd" id="1_shab4"]
-[ext_resource type="PackedScene" uid="uid://nkeb217f5ont" path="res://Player/pickup.tscn" id="2_ctghi"]
-[ext_resource type="Script" uid="uid://r8t0wloqvtli" path="res://Player/interact.gd" id="3_s4py4"]
+[ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Player/pickup_mp.gd" id="3_1wtpt"]
 [ext_resource type="PackedScene" uid="uid://c38fv3yd0hk7k" path="res://hud.tscn" id="4_m8qwc"]
+[ext_resource type="PackedScene" uid="uid://dmyjubq7qb3pq" path="res://Multiplayer/Player/pickup_mp.tscn" id="4_t6vuy"]
 [ext_resource type="Script" uid="uid://c4ep7bjvvojei" path="res://Multiplayer/Player/input_synchroniser.gd" id="5_5vwrj"]
+[ext_resource type="Script" uid="uid://bjkc68axmeic5" path="res://Multiplayer/Player/interact_mp.gd" id="5_t6vuy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbuyh"]
 friction = 0.0
@@ -33,6 +34,9 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("InputSynchroniser:jumping")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath("InputSynchroniser:attempt_pickup")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qqgab"]
 
@@ -62,16 +66,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0509262, 0)
 shape = SubResource("CylinderShape3D_qqgab")
 
 [node name="RotationHelper" type="Node3D" parent="BoundingBox"]
+script = ExtResource("3_1wtpt")
 
 [node name="Camera3D" type="Camera3D" parent="BoundingBox/RotationHelper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 fov = 90.0
 
-[node name="Pickup" parent="BoundingBox/RotationHelper" instance=ExtResource("2_ctghi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="Pickup_MP" parent="BoundingBox/RotationHelper" instance=ExtResource("4_t6vuy")]
 
 [node name="Interact" type="Node3D" parent="BoundingBox/RotationHelper"]
-script = ExtResource("3_s4py4")
+script = ExtResource("5_t6vuy")
 
 [node name="InteractRay" type="RayCast3D" parent="BoundingBox/RotationHelper/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

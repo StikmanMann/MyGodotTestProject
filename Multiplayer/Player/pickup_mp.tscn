@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmyjubq7qb3pq"]
+
+[ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Player/pickup_mp.gd" id="1_n1wal"]
+
+[node name="Pickup" type="Node3D"]
+script = ExtResource("1_n1wal")
+
+[node name="PickupRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -4)
+debug_shape_thickness = 1

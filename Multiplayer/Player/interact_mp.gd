@@ -1,4 +1,4 @@
-class_name interactor_mp
+class_name interactor
 extends Node3D
 
 
