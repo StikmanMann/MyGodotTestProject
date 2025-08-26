@@ -11,8 +11,8 @@ script = ExtResource("1_fwhb8")
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1600, 900)
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="SubViewport"]
+spawn_path = NodePath("..")
+
 [node name="MainMonitorSprite" type="Sprite3D" parent="."]
 texture = SubResource("ViewportTexture_fwhb8")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../SubViewport")

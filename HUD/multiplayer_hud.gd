@@ -8,7 +8,7 @@ extends Control
 func _ready():
 	host_game.pressed.connect(become_host)
 	join_as_player_2.pressed.connect(join)
-	var local_ips = IP.get_local_addresses()
+	#var _local_ips = IP.resolve_hostname_addresses()
 	#for ip in local_ips:
 	#	deine_ip.text += "\n" + ip # Converts the array into a comma-separated string
 

@@ -9,7 +9,7 @@ func _ready():
 		multiplayer.peer_connected.connect(_on_player_connected)
 	interactable.player_interact.connect(open_door)
 
-func _on_player_connected(id):
+func _on_player_connected(_id):
 	if not multiplayer.is_server():
 		animation_player.stop()
 		animation_player.set_active(false)
