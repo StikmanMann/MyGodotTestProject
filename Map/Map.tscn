@@ -322,12 +322,6 @@ text = "Skibidi Sugar Fabrik
 "
 script = ExtResource("5_qtvud")
 
-[node name="Door" parent="." instance=ExtResource("6_nyy2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 34, 1)
-
-[node name="Door2" parent="." instance=ExtResource("6_nyy2o")]
-transform = Transform3D(3.15, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 12)
-
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 37, 0)
 
@@ -344,6 +338,12 @@ size = Vector3(1, 0.001, 1)
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="Synchronisables" type="Node3D" parent="."]
+
+[node name="Door2" parent="Synchronisables" instance=ExtResource("6_nyy2o")]
+transform = Transform3D(3.15, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 12)
+
+[node name="Door" parent="Synchronisables" instance=ExtResource("6_nyy2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 34, 1)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Synchronisables"]
 transform = Transform3D(-0.957107, 0, 0.289733, 0, 1, 0, -0.289733, 0, -0.957107, -0.0519694, 1.75407, -40.4506)
@@ -368,4 +368,4 @@ libraries = {
 replication_config = SubResource("SceneReplicationConfig_qtvud")
 
 [connection signal="player_interact" from="Interactable" to="Interactable/Door3" method="open_door"]
-[connection signal="player_interact" from="Interactables/Interactable" to="Door2" method="open_door"]
+[connection signal="player_interact" from="Interactables/Interactable" to="Synchronisables/Door2" method="open_door"]

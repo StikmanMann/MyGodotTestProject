@@ -129,9 +129,9 @@ func _physics_process(delta: float) -> void:
 			pickup_mp.pickup()
 			input_sync.attempt_pickup = false
 		if input_sync.attempt_interact:
-			interact_mp._interact()
 			input_sync.attempt_interact = false
-			
+			interact_mp._interact()
+
 	# Optional client-side prediction. Uncomment if you want even snappier movement:
 	# elif multiplayer.get_unique_id() == player_id:
 	#     is_on_floor = _is_on_floor()

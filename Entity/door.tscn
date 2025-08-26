@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcda34a5i0vnd"]
+[gd_scene load_steps=9 format=3 uid="uid://dcda34a5i0vnd"]
 
 [ext_resource type="PackedScene" uid="uid://byhsp6ujjsh8m" path="res://Entity/interactable.tscn" id="1_ba8gm"]
 [ext_resource type="Script" uid="uid://dpvqq0knoacwq" path="res://Entity/door.gd" id="1_v6xrn"]
@@ -42,6 +42,11 @@ _data = {
 &"door_open": SubResource("Animation_v6xrn")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yrqr4"]
+properties/0/path = NodePath(".:is_open")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Door" type="Node3D"]
 script = ExtResource("1_v6xrn")
 
@@ -67,3 +72,6 @@ skeleton = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_50cdl")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_yrqr4")
