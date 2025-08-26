@@ -1,6 +1,7 @@
 class_name SecurityMainMonitorSetup
 extends Node3D
 @onready var sub_viewport = $SubViewport
+@onready var multiplayer_spawner: MultiplayerSpawner = $MultiplayerSpawner
 
 func _ready():
 	_update_monitor_children()
@@ -20,7 +21,8 @@ func _set_main_monitor(clicked_monitor: Monitor):
 	_remove_current_cam()
 		#sub_viewport.get_child(0).queue_free()
 	
-	sub_viewport.add_child(clicked_monitor.camera.duplicate())
+	#sub_viewport.add_child(clicked_monitor.camera.duplicate())
+	multiplayer_spawner.spawn(clicked_monitor.camera.duplicate())
 	
 	pass
 
