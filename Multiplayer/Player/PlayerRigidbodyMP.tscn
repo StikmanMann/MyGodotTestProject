@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c38fv3yd0hk7k" path="res://hud.tscn" id="4_m8qwc"]
 [ext_resource type="PackedScene" uid="uid://dmyjubq7qb3pq" path="res://Multiplayer/Player/pickup_mp.tscn" id="4_t6vuy"]
 [ext_resource type="Script" uid="uid://c4ep7bjvvojei" path="res://Multiplayer/Player/input_synchroniser.gd" id="5_5vwrj"]
-[ext_resource type="Script" uid="uid://bjkc68axmeic5" path="res://Multiplayer/Player/interact_mp.gd" id="5_t6vuy"]
+[ext_resource type="PackedScene" uid="uid://i8kme0q85fxr" path="res://Multiplayer/Player/interact_mp.tscn" id="5_t6vuy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbuyh"]
 friction = 0.0
@@ -37,6 +37,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("InputSynchroniser:attempt_pickup")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath("InputSynchroniser:attempt_interact")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qqgab"]
 
@@ -73,16 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 fov = 90.0
 
 [node name="Pickup_MP" parent="BoundingBox/RotationHelper" instance=ExtResource("4_t6vuy")]
-
-[node name="Interact" type="Node3D" parent="BoundingBox/RotationHelper"]
-script = ExtResource("5_t6vuy")
-
-[node name="InteractRay" type="RayCast3D" parent="BoundingBox/RotationHelper/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target_position = Vector3(0, 0, -4)
-collide_with_areas = true
-collide_with_bodies = false
-debug_shape_thickness = 1
+
+[node name="Interact_MP" parent="BoundingBox/RotationHelper" instance=ExtResource("5_t6vuy")]
 
 [node name="ThirdPerson" type="Node3D" parent="BoundingBox"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.94907, 3)

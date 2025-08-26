@@ -12,6 +12,7 @@ extends RigidBody3D
 @onready var bounding_box: Node3D      = $BoundingBox
 @onready var input_sync: Node           = %InputSynchroniser
 @onready var pickup_mp: PickupMP = $BoundingBox/RotationHelper/Pickup_MP
+@onready var interact_mp: InteractorMP = $BoundingBox/RotationHelper/Interact_MP
 
 # ---- Tuning ----
 const MAX_SPEED        := 10.0
@@ -127,6 +128,10 @@ func _physics_process(delta: float) -> void:
 		if input_sync.attempt_pickup: 
 			pickup_mp.pickup()
 			input_sync.attempt_pickup = false
+		if input_sync.attempt_interact:
+			interact_mp._interact()
+			input_sync.attempt_interact = false
+			
 	# Optional client-side prediction. Uncomment if you want even snappier movement:
 	# elif multiplayer.get_unique_id() == player_id:
 	#     is_on_floor = _is_on_floor()
