@@ -35,7 +35,8 @@ func _input(event: InputEvent) -> void:
 		return
 	# Local: accumulate raw mouse motion (compact, not whole events)
 	if event is InputEventMouseMotion:
-		look_delta = event.relative
+		player_rigidbody_mp._apply_look(event.relative)
+		look_delta += event.relative
 		
 	if event is InputEventKey:
 		if event.keycode == KEY_ESCAPE and event.is_pressed():

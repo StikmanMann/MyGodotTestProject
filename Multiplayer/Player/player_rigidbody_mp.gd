@@ -115,9 +115,9 @@ func _change_mouse_mode() -> void:
 
 # ---------- TICKS ----------
 func _process(_delta: float) -> void:
-	# Local instant camera: apply look immediately for responsiveness.
-	if multiplayer.get_unique_id() == player_id:
-		_apply_look(input_sync.look_delta)  # don't zero here -> let server consume it too
+	if multiplayer.is_server():
+		_apply_look(input_sync.look_delta)
+		input_sync.look_delta = Vector2.ZERO# don't zero here -> let server consume it too
 
 func _physics_process(delta: float) -> void:
 	# Server runs the authoritative simulation
