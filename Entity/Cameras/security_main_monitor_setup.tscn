@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcarffhiq5hik"]
+
+[ext_resource type="Script" uid="uid://vxr0eksbfy4f" path="res://Entity/Cameras/security_main_monitor_setup.gd" id="1_fwhb8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fwhb8"]
+viewport_path = NodePath("SubViewport")
+
+[node name="SecurityMainMonitorSetup" type="Node3D"]
+script = ExtResource("1_fwhb8")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1600, 900)
+
+[node name="MainMonitorSprite" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_fwhb8")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddcb5ucnj8qd0"]
+
+[ext_resource type="Script" uid="uid://cldt7063wepra" path="res://Entity/Cameras/security_camera.gd" id="1_lct61"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lct61"]
+viewport_path = NodePath("SubViewport")
+
+[node name="SecurityCamera" type="Node3D"]
+script = ExtResource("1_lct61")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 180)
+size_2d_override = Vector2i(1600, 900)
+size_2d_override_stretch = true
+
+[node name="Monitor" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_lct61")
