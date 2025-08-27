@@ -1,12 +1,14 @@
-class_name PickupMP extends Node3D
+class_name PickupMP 
+extends Node3D
 
-@onready var pickup_ray = $PickupRay
+
 
 
 @export var max_heaviness: float = 30.0      # max object mass allowed
 @export var hold_distance: float = 3.0       # how far in front of player to hold
 @export var hold_strength: float = 8.0       # how strongly we pull the object toward target
-@export var damping: float = 20.0             # smoothness of movement
+@export var damping: float = 20.0            # smoothness of movement
+@onready var pickup_ray = $PickupRay
 
 var held_object: RigidBody3D = null
 
