@@ -11,7 +11,8 @@ func _ready():
 	var args = OS.get_cmdline_args()
 	for arg in args:
 		if arg == "--host":
-			become_host()
+			pass
+			#become_host()
 
 func become_host():
 	print("JA")

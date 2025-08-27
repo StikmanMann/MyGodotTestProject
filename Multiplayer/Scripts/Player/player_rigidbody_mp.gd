@@ -11,7 +11,7 @@ extends RigidBody3D
 @onready var rotation_helper: Node3D   = $BoundingBox/RotationHelper
 @onready var bounding_box: Node3D      = $BoundingBox
 @onready var input_sync: Node           = %InputSynchroniser
-@onready var pickup_mp: PickupMP = $BoundingBox/RotationHelper/Pickup_MP
+@onready var pickup_mp: PickupMP = $BoundingBox/RotationHelper/PickupMP
 @onready var interact_mp: InteractorMP = $BoundingBox/RotationHelper/Interact_MP
 
 # ---- Tuning ----

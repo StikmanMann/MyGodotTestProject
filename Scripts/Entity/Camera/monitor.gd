@@ -42,4 +42,4 @@ func _show_camera(body: Node):
 			
 
 func _set_fps(fps: int):
-	security_camera._set_fps(cam_fps)
+	security_camera._set_fps(fps)
