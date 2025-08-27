@@ -7,6 +7,12 @@ var multiplayer_scene = preload("res://Multiplayer/Player/PlayerRigidbodyMP.tscn
 
 var _players_spawn_node
 
+func _ready():
+	var args = OS.get_cmdline_args()
+	for arg in args:
+		if arg == "--host":
+			become_host()
+
 func become_host():
 	print("JA")
 	

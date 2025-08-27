@@ -6,7 +6,7 @@ signal monitor_clicked(monitor: Monitor)
 @export var camera: Camera3D = null
 
 @onready var interactable: Interactable = $Interactable
-@onready var security_camera = $SecurityCamera
+@onready var security_camera: SecurityCamera = $SecurityCamera
 
 func _ready():
 	security_camera._set_camera(camera)
@@ -14,3 +14,4 @@ func _ready():
 
 func _monitor_clicked():
 	monitor_clicked.emit(self)
+	

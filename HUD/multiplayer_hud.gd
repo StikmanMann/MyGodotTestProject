@@ -11,6 +11,10 @@ func _ready():
 	#var _local_ips = IP.resolve_hostname_addresses()
 	#for ip in local_ips:
 	#	deine_ip.text += "\n" + ip # Converts the array into a comma-separated string
+	var args = OS.get_cmdline_args()
+	for arg in args:
+		if arg == "--client":
+			text_edit.text="::1"
 
 
 func become_host():

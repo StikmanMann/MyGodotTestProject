@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dr4h88t048e0x"]
 
 [ext_resource type="Script" uid="uid://d2v6obbu0iftg" path="res://Multiplayer/Player/player_rigidbody_mp.gd" id="1_shab4"]
-[ext_resource type="Script" path="res://Multiplayer/Player/pickup_mp.gd" id="3_1wtpt"]
+[ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Player/pickup_mp.gd" id="3_1wtpt"]
 [ext_resource type="PackedScene" uid="uid://c38fv3yd0hk7k" path="res://HUD/hud.tscn" id="4_m8qwc"]
-[ext_resource type="PackedScene" path="res://Multiplayer/Player/pickup_mp.tscn" id="4_t6vuy"]
+[ext_resource type="PackedScene" uid="uid://7ov2ktc3qjh0" path="res://Multiplayer/Player/pickup_mp.tscn" id="4_t6vuy"]
 [ext_resource type="Script" uid="uid://c4ep7bjvvojei" path="res://Multiplayer/Player/input_synchroniser.gd" id="5_5vwrj"]
 [ext_resource type="PackedScene" uid="uid://i8kme0q85fxr" path="res://Multiplayer/Player/interact_mp.tscn" id="5_t6vuy"]
 

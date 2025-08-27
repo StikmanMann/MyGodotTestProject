@@ -22,3 +22,6 @@ func _set_camera(camera: Camera3D):
 	
 	# Display the viewport texture on the monitor
 	monitor.texture = sub_viewport.get_texture()
+
+func _get_camera() -> Camera3D:
+	return sub_viewport.get_camera_3d()

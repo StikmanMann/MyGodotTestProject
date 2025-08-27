@@ -128,12 +128,12 @@ func _physics_process(delta: float) -> void:
 		#input_sync.look_delta = Vector2.ZERO
 		_apply_movement(input_sync.movement_input, delta)
 		if attempt_pickup:
-			print("attempt pickup: %s" % attempt_pickup) 
+			#print("attempt pickup: %s" % attempt_pickup) 
 			attempt_pickup = false
 			pickup_mp.pickup()
 			
 		if attempt_interact:
-			print("attempt interact: %s" % attempt_interact)
+			#print("attempt interact: %s" % attempt_interact)
 			attempt_interact = false
 			interact_mp._interact()
 
