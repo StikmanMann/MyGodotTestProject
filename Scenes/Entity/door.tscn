@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcda34a5i0vnd"]
 
-[ext_resource type="PackedScene" uid="uid://byhsp6ujjsh8m" path="res://Entity/interactable.tscn" id="1_ba8gm"]
-[ext_resource type="Script" uid="uid://dpvqq0knoacwq" path="res://Entity/door.gd" id="1_v6xrn"]
+[ext_resource type="PackedScene" uid="uid://byhsp6ujjsh8m" path="res://Scenes/Entity/interactable.tscn" id="1_ba8gm"]
+[ext_resource type="Script" uid="uid://dpvqq0knoacwq" path="res://Scripts/Entity/door.gd" id="1_v6xrn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6xrn"]
 

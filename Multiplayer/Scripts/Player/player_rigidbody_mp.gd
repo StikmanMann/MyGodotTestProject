@@ -63,7 +63,7 @@ func _apply_look(delta_vec: Vector2) -> void:
 
 func _input(event):
 	if event is InputEventKey: 
-		print(event.as_text_keycode())
+		#print(event.as_text_keycode())
 		if event.as_text_keycode() == "T": 
 			camera.transform = $BoundingBox/ThirdPerson.transform 
 		elif event.as_text_keycode() == "F": 

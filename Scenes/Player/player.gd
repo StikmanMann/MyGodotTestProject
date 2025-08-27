@@ -39,7 +39,7 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 	
 	if event is InputEventKey:
-		print(event.as_text_keycode())
+		#print(event.as_text_keycode())
 		if event.as_text_keycode() == "B":
 			pass
 

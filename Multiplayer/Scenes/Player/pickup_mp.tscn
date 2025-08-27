@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7ov2ktc3qjh0"]
 
-[ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Player/pickup_mp.gd" id="1_n1wal"]
+[ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Scripts/Player/pickup_mp.gd" id="1_n1wal"]
 
 [node name="Pickup" type="Node3D"]
 script = ExtResource("1_n1wal")

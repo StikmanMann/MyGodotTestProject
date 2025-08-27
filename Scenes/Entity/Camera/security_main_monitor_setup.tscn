@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcarffhiq5hik"]
 
-[ext_resource type="Script" uid="uid://vxr0eksbfy4f" path="res://Entity/Cameras/security_main_monitor_setup.gd" id="1_fwhb8"]
+[ext_resource type="Script" uid="uid://vxr0eksbfy4f" path="res://Scripts/Entity/Camera/security_main_monitor_setup.gd" id="1_fwhb8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fwhb8"]
 viewport_path = NodePath("SubViewport")

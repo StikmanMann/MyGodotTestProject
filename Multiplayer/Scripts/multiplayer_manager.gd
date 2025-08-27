@@ -3,7 +3,7 @@ extends Node
 const SERVER_PORT = 25565
 const SERVER_IP = "127.0.0.1"
 
-var multiplayer_scene = preload("res://Multiplayer/Player/PlayerRigidbodyMP.tscn")
+var multiplayer_scene = preload("res://Multiplayer/Scenes/Player/PlayerRigidbodyMP.tscn")
 
 var _players_spawn_node
 

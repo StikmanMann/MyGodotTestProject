@@ -1,19 +1,26 @@
 class_name SecurityMainMonitorSetup
 extends Node3D
 @onready var sub_viewport = $SubViewport
-@onready var multiplayer_spawner: MultiplayerSpawner = $MultiplayerSpawner
 @onready var camera_3d : Camera3D = $SubViewport/Camera3D
+@export var cam_fps := 30
 
 func _ready():
 	_update_monitor_children()
 
+var _accum_time := 0.0
+
+func _process(delta: float) -> void:
+	_accum_time += delta
+	if _accum_time >= 1.0 / cam_fps:
+		sub_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+		_accum_time = 0.0
 
 func _update_monitor_children():
+	
 	for child in get_children():
 		if child is Monitor:
 			var monitor: Monitor = child
 			monitor.monitor_clicked.connect(_set_main_monitor)
-			
 
 
 func _set_main_monitor(clicked_monitor: Monitor):

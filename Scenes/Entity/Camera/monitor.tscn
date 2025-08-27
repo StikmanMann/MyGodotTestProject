@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dogb05i11k42m"]
+
+[ext_resource type="Script" uid="uid://j23cltx3p81j" path="res://Scripts/Entity/Camera/monitor.gd" id="1_0nfhm"]
+[ext_resource type="PackedScene" uid="uid://byhsp6ujjsh8m" path="res://Scenes/Entity/interactable.tscn" id="1_wlumi"]
+[ext_resource type="PackedScene" uid="uid://ddcb5ucnj8qd0" path="res://Scenes/Entity/Camera/security_camera.tscn" id="2_0nfhm"]
+
+[node name="Monitor" type="Node3D"]
+script = ExtResource("1_0nfhm")
+
+[node name="Interactable" parent="." instance=ExtResource("1_wlumi")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+
+[node name="SecurityCamera" parent="." instance=ExtResource("2_0nfhm")]
