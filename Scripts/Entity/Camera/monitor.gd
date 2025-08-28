@@ -11,6 +11,7 @@ signal monitor_clicked(monitor: Monitor)
 @onready var security_camera: SecurityCamera = $SecurityCamera
 
 func _ready():
+	self.visible = false
 	security_camera._set_fps(cam_fps)
 	security_camera._set_camera(camera)
 	interactable.player_interact.connect(_monitor_clicked)
@@ -18,6 +19,13 @@ func _ready():
 		render_area.monitoring = true
 		render_area.body_entered.connect(_show_camera)
 		render_area.body_exited.connect(_hide_camera)
+		var bodies = render_area.get_overlapping_bodies()
+		for body in bodies:
+			if body is PlayerRBMP:
+				var player: PlayerRBMP = body
+				if multiplayer.get_unique_id() == player.player_id:
+					self.visible = true
+					print("Showing camera!")
 	else:
 		print("No render area3d found! Unoptimised bs")
 

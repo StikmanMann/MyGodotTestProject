@@ -11,13 +11,14 @@ func _ready():
 	var args = OS.get_cmdline_args()
 	for arg in args:
 		if arg == "--host":
+			await get_tree().create_timer(1.0).timeout
+			become_host()
 			pass
-			#become_host()
 
 func become_host():
 	print("JA")
 	
-	_players_spawn_node = get_tree().current_scene.get_node("Players")
+	_players_spawn_node = get_tree().current_scene.get_node("Multiplayer").get_node("Players")
 	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)

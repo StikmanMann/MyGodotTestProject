@@ -9,5 +9,26 @@ script = ExtResource("1_0nfhm")
 
 [node name="Interactable" parent="." instance=ExtResource("1_wlumi")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+visible = false
 
 [node name="SecurityCamera" parent="." instance=ExtResource("2_0nfhm")]
+
+[node name="MonitorFrame" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MonitorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 0, -0.05)
+size = Vector3(3.4, 2, 0.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MonitorFrame/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.05, 0.1)
+operation = 2
+size = Vector3(3.2, 1.7, 0.2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MonitorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, -1.2, -0.1)
+size = Vector3(0.2, 0.6, 0.2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="MonitorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45, 0)
+size = Vector3(1, 0.1, 1)

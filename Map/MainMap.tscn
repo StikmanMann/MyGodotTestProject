@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8ygl8wmwt0rx"]
+
+[ext_resource type="PackedScene" uid="uid://dogb05i11k42m" path="res://Scenes/Entity/Camera/monitor.tscn" id="1_ahuvw"]
+[ext_resource type="PackedScene" uid="uid://crrco762ow56c" path="res://Scenes/Player/PlayerRigidbody.tscn" id="1_cqapf"]
+[ext_resource type="PackedScene" uid="uid://bcarffhiq5hik" path="res://Scenes/Entity/Camera/security_main_monitor_setup.tscn" id="2_jvfqa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahuvw"]
+size = Vector3(8.3, 4.9, 6.5)
+
+[node name="MainMap" type="Node3D"]
+
+[node name="CSG" type="Node3D" parent="."]
+
+[node name="Walls" type="CSGCombiner3D" parent="CSG"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 3, 0)
+size = Vector3(1, 5, 50)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSG/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, 0)
+size = Vector3(1, 5, 50)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSG/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -24.5)
+size = Vector3(50, 5, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSG/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 24.5)
+size = Vector3(50, 5, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSG/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3, 17.5)
+size = Vector3(9, 5, 1)
+
+[node name="Floor" type="CSGCombiner3D" parent="CSG"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG/Floor"]
+size = Vector3(50, 1, 50)
+
+[node name="Multiplayer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Players" type="Node3D" parent="Multiplayer"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multiplayer"]
+_spawnable_scenes = PackedStringArray("uid://dr4h88t048e0x")
+spawn_path = NodePath("../Players")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0192547, -0.990532, -0.135927, 0.734878, -0.0781614, 0.67368, -0.677926, -0.112861, 0.726415, 3, 1.44907, 8)
+shadow_enabled = true
+
+[node name="PlayerRigidbody" parent="." instance=ExtResource("1_cqapf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="SecurityRoom" type="Node3D" parent="."]
+
+[node name="Light" type="Node3D" parent="SecurityRoom"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SecurityRoom/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 3, 20)
+
+[node name="Monitors" type="Node3D" parent="SecurityRoom"]
+
+[node name="Other" type="CSGCombiner3D" parent="SecurityRoom/Monitors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 17)
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SecurityRoom/Monitors/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299999, 0.9, 1.45)
+size = Vector3(5, 0.8, 0.7)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SecurityRoom/Monitors/Other/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, -0.1, 0)
+operation = 2
+size = Vector3(4.8, 0.8, 1)
+
+[node name="Props" type="Node3D" parent="SecurityRoom/Monitors"]
+
+[node name="Monitors" type="Node3D" parent="SecurityRoom/Monitors/Props"]
+
+[node name="SecurityMainMonitorSetup" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("monitors") instance=ExtResource("2_jvfqa")]
+transform = Transform3D(0.10296, 0, 0, 0, 0.10296, 0, 0, 0, 0.0858, -18.703, 2.04736, 18.4)
+monitors = [NodePath("../Monitor"), NodePath("../Monitor2"), NodePath("../Monitor3"), NodePath("../Monitor4")]
+
+[node name="Monitor" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
+transform = Transform3D(0.257643, 0, 0.14875, 0, 0.2975, 0, -0.14875, 0, 0.257643, -20.2627, 1.772, 18.5457)
+camera = NodePath("Camera3D")
+render_area = NodePath("../../../RenderArea")
+
+[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor"]
+transform = Transform3D(3.04641, -0.600357, 1.28747, 3.36653e-08, 3.04641, 1.42057, -1.42056, -1.28747, 2.76098, 11.9738, 11.3613, 26.3197)
+
+[node name="Monitor2" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
+transform = Transform3D(0.257643, 0, 0.14875, 0, 0.2975, 0, -0.14875, 0, 0.257643, -20.2627, 2.52798, 18.5457)
+camera = NodePath("Camera3D")
+render_area = NodePath("../../../RenderArea")
+
+[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor2"]
+
+[node name="Monitor3" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
+transform = Transform3D(0.257643, 0, -0.14875, 0, 0.2975, 0, 0.14875, 0, 0.257643, -17.0722, 1.772, 18.4524)
+camera = NodePath("Camera3D")
+render_area = NodePath("../../../RenderArea")
+
+[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor3"]
+
+[node name="Monitor4" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
+transform = Transform3D(0.257643, 0, -0.14875, 0, 0.2975, 0, 0.14875, 0, 0.257643, -17.0722, 2.52798, 18.4524)
+camera = NodePath("Camera3D")
+render_area = NodePath("../../../RenderArea")
+
+[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor4"]
+
+[node name="RenderArea" type="Area3D" parent="SecurityRoom/Monitors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, 21)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SecurityRoom/Monitors/RenderArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.95, -0.25)
+shape = SubResource("BoxShape3D_ahuvw")

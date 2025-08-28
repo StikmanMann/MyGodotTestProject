@@ -3,6 +3,7 @@ extends Node3D
 @onready var sub_viewport = $SubViewport
 @onready var camera_3d : Camera3D = $SubViewport/Camera3D
 @export var cam_fps := 30
+@export var monitors: Array[Monitor] = []
 
 func _ready():
 	_update_monitor_children()
@@ -16,11 +17,10 @@ func _process(delta: float) -> void:
 		_accum_time = 0.0
 
 func _update_monitor_children():
-	
-	for child in get_children():
-		if child is Monitor:
-			var monitor: Monitor = child
-			monitor.monitor_clicked.connect(_set_main_monitor)
+	for monitor in monitors:
+		await  monitor.ready
+		monitor.monitor_clicked.connect(_set_main_monitor)
+	_set_main_monitor(monitors[0])
 
 
 func _set_main_monitor(clicked_monitor: Monitor):
