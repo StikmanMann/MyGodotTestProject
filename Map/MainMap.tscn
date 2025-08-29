@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ygl8wmwt0rx"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ygl8wmwt0rx"]
 
 [ext_resource type="PackedScene" uid="uid://dogb05i11k42m" path="res://Scenes/Entity/Camera/monitor.tscn" id="1_ahuvw"]
 [ext_resource type="PackedScene" uid="uid://crrco762ow56c" path="res://Scenes/Player/PlayerRigidbody.tscn" id="1_cqapf"]
 [ext_resource type="PackedScene" uid="uid://bcarffhiq5hik" path="res://Scenes/Entity/Camera/security_main_monitor_setup.tscn" id="2_jvfqa"]
 [ext_resource type="PackedScene" uid="uid://dcda34a5i0vnd" path="res://Scenes/Entity/door.tscn" id="4_i0vnk"]
+[ext_resource type="PackedScene" uid="uid://6m4eqskre4kb" path="res://Scenes/Entity/Objectives/candy_spawner.tscn" id="5_y0bko"]
+[ext_resource type="PackedScene" uid="uid://cpml8a7pegxvi" path="res://Scenes/Entity/Objectives/candy_delivery.tscn" id="6_m8jny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0vnk"]
 albedo_color = Color(0.330313, 0.353869, 0.351436, 1)
@@ -188,4 +190,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 3, 20)
 [node name="LightmapGI" type="LightmapGI" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
+[node name="CandySpawner" parent="." instance=ExtResource("5_y0bko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, 16)
+
+[node name="CandyDelivery" parent="." instance=ExtResource("6_m8jny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 1, 3)
+
 [connection signal="button_press" from="SecurityRoom/Monitors/Props/Monitors/Monitor" to="Door" method="open_door"]
+[connection signal="candy_delivered" from="CandyDelivery" to="CandySpawner" method="_spawn_candy"]

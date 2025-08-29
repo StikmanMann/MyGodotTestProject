@@ -35,6 +35,8 @@ func _input(event: InputEvent) -> void:
 		return
 	# Local: accumulate raw mouse motion (compact, not whole events)
 	if event is InputEventMouseMotion:
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			return
 		player_rigidbody_mp._apply_look(event.relative)
 		look_delta += event.relative
 		

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://btcrqd55363s0"]
+
+[ext_resource type="Script" uid="uid://dxl3idqoic1uf" path="res://Scenes/Entity/Objectives/candy_objective.gd" id="1_ane0v"]
+[ext_resource type="Texture2D" uid="uid://cvhkou0wkyfba" path="res://Textures/caseoh.webp" id="2_sbapc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcxnf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktccc"]
+albedo_texture = ExtResource("2_sbapc")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yufhy"]
+material = SubResource("StandardMaterial3D_ktccc")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ane0v"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="CandyObjective" type="RigidBody3D"]
+script = ExtResource("1_ane0v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mcxnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_yufhy")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ane0v")

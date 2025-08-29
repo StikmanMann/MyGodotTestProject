@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpml8a7pegxvi"]
+
+[ext_resource type="Script" uid="uid://vt6lnk37c8i1" path="res://Scenes/Entity/Objectives/candy_delivery.gd" id="1_ycavt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cf436"]
+size = Vector3(2.6, 1, 2.6)
+
+[node name="CandyDelivery" type="Node3D"]
+script = ExtResource("1_ycavt")
+
+[node name="CSG" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG"]
+use_collision = true
+size = Vector3(3, 1, 3)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0.25, 2.98023e-08)
+operation = 2
+size = Vector3(2.6, 0.5, 2.6)
+
+[node name="DeliveryZone" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, 2.98023e-08)
+shape = SubResource("BoxShape3D_cf436")

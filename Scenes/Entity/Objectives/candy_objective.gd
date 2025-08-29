@@ -1,0 +1,2 @@
+class_name CandyObjective
+extends RigidBody3D

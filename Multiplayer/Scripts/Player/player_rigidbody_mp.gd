@@ -29,6 +29,7 @@ var is_on_floor: bool = false
 var attempt_pickup: bool =false
 var attempt_interact: bool =false
 
+
 signal change_mouse_mode
 
 
@@ -46,9 +47,6 @@ func _ready() -> void:
 
 # ---------- CAMERA LOOK ----------
 func _apply_look(delta_vec: Vector2) -> void:
-	#Funktionmiert nur bei host wiel kein bock fick den client :p
-	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		return
 	# delta_vec.x = mouse X, delta_vec.y = mouse Y
 	# Yaw on body, pitch on camera helper
 	var yaw   := -delta_vec.x * MOUSE_SENS
