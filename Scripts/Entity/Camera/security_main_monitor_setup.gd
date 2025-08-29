@@ -10,7 +10,7 @@ signal button_press
 
 func _ready():
 	_update_monitor_children()
-	interactable.player_interact.connect(_button_press)
+	interactable.interact.connect(_button_press)
 
 var _accum_time := 0.0
 

@@ -1,18 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcda34a5i0vnd"]
+[gd_scene load_steps=10 format=3 uid="uid://dcda34a5i0vnd"]
 
 [ext_resource type="PackedScene" uid="uid://byhsp6ujjsh8m" path="res://Scenes/Entity/interactable.tscn" id="1_ba8gm"]
 [ext_resource type="Script" uid="uid://dpvqq0knoacwq" path="res://Scripts/Entity/door.gd" id="1_v6xrn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6xrn"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emhi6"]
+albedo_color = Color(0.64319, 0.418889, 0.248661, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_0phs7"]
+material = SubResource("StandardMaterial3D_emhi6")
 
 [sub_resource type="Animation" id="Animation_0phs7"]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("DoorHinge:rotation")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
@@ -43,7 +47,7 @@ _data = {
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yrqr4"]
-properties/0/path = NodePath("DoorHinge:rotation")
+properties/0/path = NodePath(".:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
@@ -51,7 +55,7 @@ properties/0/replication_mode = 1
 script = ExtResource("1_v6xrn")
 
 [node name="DoorHinge" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
 
 [node name="Interactable" parent="DoorHinge" instance=ExtResource("1_ba8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
@@ -67,6 +71,8 @@ shape = SubResource("BoxShape3D_v6xrn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
 mesh = SubResource("BoxMesh_0phs7")
 skeleton = NodePath("")
+
+[node name="Rotator" type="Node3D" parent="DoorHinge"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

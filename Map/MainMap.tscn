@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8ygl8wmwt0rx"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ygl8wmwt0rx"]
 
 [ext_resource type="PackedScene" uid="uid://dogb05i11k42m" path="res://Scenes/Entity/Camera/monitor.tscn" id="1_ahuvw"]
 [ext_resource type="PackedScene" uid="uid://crrco762ow56c" path="res://Scenes/Player/PlayerRigidbody.tscn" id="1_cqapf"]
 [ext_resource type="PackedScene" uid="uid://bcarffhiq5hik" path="res://Scenes/Entity/Camera/security_main_monitor_setup.tscn" id="2_jvfqa"]
 [ext_resource type="PackedScene" uid="uid://dcda34a5i0vnd" path="res://Scenes/Entity/door.tscn" id="4_i0vnk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0vnk"]
+albedo_color = Color(0.330313, 0.353869, 0.351436, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahuvw"]
 size = Vector3(8.3, 4.9, 6.5)
@@ -31,18 +34,68 @@ size = Vector3(50, 5, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 24.5)
 size = Vector3(50, 5, 1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSG/Walls"]
+[node name="Hallway" type="CSGCombiner3D" parent="CSG/Walls"]
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, 13)
+size = Vector3(1, 5, 22)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3, 0)
+size = Vector3(1, 5, 10)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, 19.5)
+size = Vector3(1, 5, 9)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, -4.5)
+size = Vector3(29, 5, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3, -4.5)
+size = Vector3(18, 5, 1)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 8.5)
+size = Vector3(28, 5, 1)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 14.5)
+size = Vector3(13, 5, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3, 7)
+size = Vector3(1, 5, 10)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSG/Walls/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 2.5)
+size = Vector3(8, 5, 1)
+
+[node name="Security" type="CSGCombiner3D" parent="CSG/Walls"]
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSG/Walls/Security"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3, 17.5)
 size = Vector3(9, 5, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSG/Walls/Security"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3, 21)
+size = Vector3(1, 5, 6)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG/Walls/Security/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.5)
+operation = 2
+size = Vector3(1, 3, 2)
 
 [node name="Floor" type="CSGCombiner3D" parent="CSG"]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSG/Floor"]
 size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_i0vnk")
 
 [node name="Multiplayer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 22)
 
 [node name="Players" type="Node3D" parent="Multiplayer"]
 
@@ -55,14 +108,9 @@ transform = Transform3D(0.0192547, -0.990532, -0.135927, 0.734878, -0.0781614, 0
 shadow_enabled = true
 
 [node name="PlayerRigidbody" parent="." instance=ExtResource("1_cqapf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 4, 22)
 
 [node name="SecurityRoom" type="Node3D" parent="."]
-
-[node name="Light" type="Node3D" parent="SecurityRoom"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SecurityRoom/Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 3, 20)
 
 [node name="Monitors" type="Node3D" parent="SecurityRoom"]
 
@@ -89,32 +137,35 @@ monitors = [NodePath("../Monitor"), NodePath("../Monitor2"), NodePath("../Monito
 
 [node name="Monitor" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
 transform = Transform3D(0.257643, 0, 0.14875, 0, 0.2975, 0, -0.14875, 0, 0.257643, -20.2627, 1.772, 18.5457)
-camera = NodePath("Camera3D")
+camera = NodePath("../SecurityRoomCam")
 render_area = NodePath("../../../RenderArea")
 
-[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor"]
-transform = Transform3D(3.04641, -0.600357, 1.28747, 3.36653e-08, 3.04641, 1.42057, -1.42056, -1.28747, 2.76098, 11.9738, 11.3613, 26.3197)
+[node name="SecurityRoomCam" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors"]
+transform = Transform3D(0.342022, -0.604023, 0.719845, 1.77324e-08, 0.766044, 0.642789, -0.939692, -0.219848, 0.262004, -10.2627, 5.15199, 23.5457)
 
 [node name="Monitor2" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
 transform = Transform3D(0.257643, 0, 0.14875, 0, 0.2975, 0, -0.14875, 0, 0.257643, -20.2627, 2.52798, 18.5457)
-camera = NodePath("Camera3D")
+camera = NodePath("../Camera3D")
 render_area = NodePath("../../../RenderArea")
 
-[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor2"]
+[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors"]
+transform = Transform3D(-0.499999, -0.433013, 0.75, 2.78059e-08, 0.866025, 0.5, -0.866026, 0.25, -0.433012, -16.3967, 4.52798, 5.1893)
 
 [node name="Monitor3" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
 transform = Transform3D(0.257643, 0, -0.14875, 0, 0.2975, 0, 0.14875, 0, 0.257643, -17.0722, 1.772, 18.4524)
-camera = NodePath("Camera3D")
+camera = NodePath("../Camera3D2")
 render_area = NodePath("../../../RenderArea")
 
-[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor3"]
+[node name="Camera3D2" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors"]
+transform = Transform3D(-0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707106, 0.353554, -0.612373, 4.9278, 4.772, -3.5476)
 
 [node name="Monitor4" parent="SecurityRoom/Monitors/Props/Monitors" node_paths=PackedStringArray("camera", "render_area") instance=ExtResource("1_ahuvw")]
 transform = Transform3D(0.257643, 0, -0.14875, 0, 0.2975, 0, 0.14875, 0, 0.257643, -17.0722, 2.52798, 18.4524)
-camera = NodePath("Camera3D")
+camera = NodePath("../Camera3D3")
 render_area = NodePath("../../../RenderArea")
 
-[node name="Camera3D" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors/Monitor4"]
+[node name="Camera3D3" type="Camera3D" parent="SecurityRoom/Monitors/Props/Monitors"]
+transform = Transform3D(-0.500001, -0.433013, 0.75, 0, 0.866025, 0.5, -0.866025, 0.25, -0.433013, 6.9278, 4.52798, 9.4524)
 
 [node name="RenderArea" type="Area3D" parent="SecurityRoom/Monitors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, 21)
@@ -124,6 +175,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.95, -0.25)
 shape = SubResource("BoxShape3D_ahuvw")
 
 [node name="Door" parent="." instance=ExtResource("4_i0vnk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 15)
+transform = Transform3D(2.015, 0, 0, 0, 1.482, 0, 0, 0, 2, -15, 0.5, 22.5)
+locked = true
 
-[connection signal="button_press" from="SecurityRoom/Monitors/Props/Monitors/Monitor3" to="Door" method="open_door"]
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SecurityRoom" type="Node3D" parent="Lights"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/SecurityRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 3, 20)
+
+[node name="LightmapGI" type="LightmapGI" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[connection signal="button_press" from="SecurityRoom/Monitors/Props/Monitors/Monitor" to="Door" method="open_door"]

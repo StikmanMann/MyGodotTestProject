@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://crrco762ow56c"]
 
-[ext_resource type="Script" uid="uid://bup27rk41mdjp" path="res://Scenes/Player/playerRigidbody.gd" id="1_7u3v3"]
+[ext_resource type="Script" uid="uid://bup27rk41mdjp" path="res://Scripts/Player/playerRigidbody.gd" id="1_7u3v3"]
 [ext_resource type="PackedScene" uid="uid://nkeb217f5ont" path="res://Scenes/Player/pickup.tscn" id="2_felss"]
-[ext_resource type="Script" uid="uid://r8t0wloqvtli" path="res://Scenes/Player/interact.gd" id="3_felss"]
+[ext_resource type="Script" uid="uid://r8t0wloqvtli" path="res://Scripts/Player/interact.gd" id="3_felss"]
 [ext_resource type="PackedScene" uid="uid://c38fv3yd0hk7k" path="res://Scenes/HUD/hud.tscn" id="4_2q0qd"]
 [ext_resource type="PackedScene" uid="uid://b88yera7nntv4" path="res://Scenes/HUD/multiplayer_hud.tscn" id="5_b4bdc"]
 

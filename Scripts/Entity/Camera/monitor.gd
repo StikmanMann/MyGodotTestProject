@@ -17,7 +17,7 @@ func _ready():
 	self.visible = false
 	security_camera._set_fps(cam_fps)
 	security_camera._set_camera(camera)
-	interactable.player_interact.connect(_monitor_clicked)
+	interactable.interact.connect(_monitor_clicked)
 	if render_area is Area3D:
 		render_area.monitoring = true
 		render_area.body_entered.connect(_show_camera)

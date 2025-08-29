@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr4h88t048e0x"]
+[gd_scene load_steps=14 format=3 uid="uid://dr4h88t048e0x"]
 
 [ext_resource type="Script" uid="uid://d2v6obbu0iftg" path="res://Multiplayer/Scripts/Player/player_rigidbody_mp.gd" id="1_shab4"]
 [ext_resource type="Script" uid="uid://l8tbbci04xyq" path="res://Multiplayer/Scripts/Player/pickup_mp.gd" id="3_1wtpt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c4ep7bjvvojei" path="res://Multiplayer/Scripts/Player/input_synchroniser.gd" id="5_5vwrj"]
 [ext_resource type="PackedScene" uid="uid://i8kme0q85fxr" path="res://Multiplayer/Scenes/Player/interact_mp.tscn" id="5_t6vuy"]
 [ext_resource type="PackedScene" uid="uid://dknnpkwwbw1a5" path="res://Scenes/HUD/fps_counter.tscn" id="7_a7en4"]
+[ext_resource type="PackedScene" uid="uid://l60uimou88bh" path="res://Scenes/HUD/Settings.tscn" id="8_dtqyx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbuyh"]
 friction = 0.0
@@ -130,6 +131,20 @@ target_position = Vector3(0, -1.1, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_n7bvk")
 
-[node name="HUD" parent="." instance=ExtResource("4_m8qwc")]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="FpsCounter" parent="." instance=ExtResource("7_a7en4")]
+[node name="HUD" parent="UI" instance=ExtResource("4_m8qwc")]
+layout_mode = 1
+
+[node name="FpsCounter" parent="UI" instance=ExtResource("7_a7en4")]
+layout_mode = 1
+
+[node name="Settings" parent="UI" instance=ExtResource("8_dtqyx")]
+visible = false
+layout_mode = 1

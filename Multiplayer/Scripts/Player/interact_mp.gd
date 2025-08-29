@@ -10,4 +10,4 @@ func _interact() -> void:
 		print(obj)
 		if obj is Interactable:
 			print("Jetzt ist es ezit")
-			obj.player_interact.emit()
+			obj.interact.emit()

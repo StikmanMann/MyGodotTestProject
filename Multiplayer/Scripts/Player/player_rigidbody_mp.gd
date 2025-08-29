@@ -22,7 +22,7 @@ const AIR_ACCELERATION := MAX_SPEED * 20.0
 const FRICTION         := 16.0
 const JUMP_VELOCITY    := 5.0
 const MOUSE_SENS       := 0.001       # radians per pixel
-const PITCH_LIMIT_deg  := 70.0
+const PITCH_LIMIT_deg  := 90.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_on_floor: bool = false
@@ -46,6 +46,9 @@ func _ready() -> void:
 
 # ---------- CAMERA LOOK ----------
 func _apply_look(delta_vec: Vector2) -> void:
+	#Funktionmiert nur bei host wiel kein bock fick den client :p
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
 	# delta_vec.x = mouse X, delta_vec.y = mouse Y
 	# Yaw on body, pitch on camera helper
 	var yaw   := -delta_vec.x * MOUSE_SENS
@@ -106,11 +109,15 @@ func _is_on_floor() -> bool:
 					return true
 	return false
 
+@onready var settings = $UI/Settings
+
 # ---------- INPUT MOUSE TOGGLE ----------
 func _change_mouse_mode() -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		settings.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
+		settings.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # ---------- TICKS ----------
