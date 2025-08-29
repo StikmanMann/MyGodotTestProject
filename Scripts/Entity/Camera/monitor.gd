@@ -3,14 +3,17 @@ extends Node3D
 
 signal monitor_clicked(monitor: Monitor)
 
-@export var cam_fps := 5
+@export var cam_fps := MonitorSettings.monitor_fps
 @export var camera: Camera3D = null
 @export var render_area: Area3D = null
 
 @onready var interactable: Interactable = $Interactable
 @onready var security_camera: SecurityCamera = $SecurityCamera
 
+signal button_press
+
 func _ready():
+	MonitorSettings.monitor_fps_changed.connect(_set_fps)
 	self.visible = false
 	security_camera._set_fps(cam_fps)
 	security_camera._set_camera(camera)

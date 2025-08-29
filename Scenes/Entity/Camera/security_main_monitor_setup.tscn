@@ -20,13 +20,13 @@ properties/1/replication_mode = 1
 [node name="SecurityMainMonitorSetup" type="Node3D"]
 script = ExtResource("1_fwhb8")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Button" type="Node3D" parent="."]
 transform = Transform3D(4.6, 0, 0, 0, 1, 0, 0, 0, 2.1, 0, -7, 1.42)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Button"]
 material = SubResource("StandardMaterial3D_eykkc")
 
-[node name="Interactable" parent="Node3D" instance=ExtResource("2_x6qxv")]
+[node name="Interactable" parent="Button" instance=ExtResource("2_x6qxv")]
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1600, 900)

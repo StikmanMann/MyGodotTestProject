@@ -35,8 +35,7 @@ func _input(event: InputEvent) -> void:
 		return
 	# Local: accumulate raw mouse motion (compact, not whole events)
 	if event is InputEventMouseMotion:
-		if multiplayer.get_unique_id() != 1: #If host dont 
-			player_rigidbody_mp._apply_look(event.relative)
+		player_rigidbody_mp._apply_look(event.relative)
 		look_delta += event.relative
 		
 	if event is InputEventKey:

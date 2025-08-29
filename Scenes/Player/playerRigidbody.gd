@@ -78,12 +78,12 @@ func _physics_process(delta):
 	#print(currentSpeed)
 	
 	if not is_on_floor() or Input.is_action_pressed("jump"):
-		linear_velocity.y -= gravity * delta
+		linear_velocity.y -= gravity * delta #speed in the air
 		var addSpeed = clamp(max_air_speed - currentSpeed, 0, air_acceleration * delta)
 		#print(addSpeed)
 		linear_velocity += wishDir * addSpeed
 	else:
-		applyFriction(delta)
+		applyFriction(delta) #speed on floor
 		var addSpeed = clamp(max_speed - currentSpeed, 0, acceleration * delta)
 		linear_velocity += wishDir * addSpeed
 	

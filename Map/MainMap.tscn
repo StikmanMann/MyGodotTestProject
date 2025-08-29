@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8ygl8wmwt0rx"]
+[gd_scene load_steps=6 format=3 uid="uid://c8ygl8wmwt0rx"]
 
 [ext_resource type="PackedScene" uid="uid://dogb05i11k42m" path="res://Scenes/Entity/Camera/monitor.tscn" id="1_ahuvw"]
 [ext_resource type="PackedScene" uid="uid://crrco762ow56c" path="res://Scenes/Player/PlayerRigidbody.tscn" id="1_cqapf"]
 [ext_resource type="PackedScene" uid="uid://bcarffhiq5hik" path="res://Scenes/Entity/Camera/security_main_monitor_setup.tscn" id="2_jvfqa"]
+[ext_resource type="PackedScene" uid="uid://dcda34a5i0vnd" path="res://Scenes/Entity/door.tscn" id="4_i0vnk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahuvw"]
 size = Vector3(8.3, 4.9, 6.5)
@@ -121,3 +122,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, 21)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecurityRoom/Monitors/RenderArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.95, -0.25)
 shape = SubResource("BoxShape3D_ahuvw")
+
+[node name="Door" parent="." instance=ExtResource("4_i0vnk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 15)
+
+[connection signal="button_press" from="SecurityRoom/Monitors/Props/Monitors/Monitor3" to="Door" method="open_door"]

@@ -4,6 +4,7 @@ extends Node3D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var interactable = $DoorHinge/Interactable
 signal door_interact
+
 func _ready():
 	if animation_player:
 		multiplayer.peer_connected.connect(_on_player_connected)

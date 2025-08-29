@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://l60uimou88bh"]
+
+[ext_resource type="Script" uid="uid://ch044hkmadq6o" path="res://Map/s_nebenmonitore_fps.gd" id="1_bhvap"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8p7y"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhvap"]
+font_size = 24
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -5.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Überschrift" type="Label" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Settings"
+label_settings = SubResource("LabelSettings_a8p7y")
+horizontal_alignment = 1
+
+[node name="L_Nebenmonitore_FPS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 270.0
+offset_right = 708.0
+offset_bottom = 320.0
+text = "Nebenmonitore FPS"
+label_settings = SubResource("LabelSettings_bhvap")
+
+[node name="HS_Nebenmonitore_FPS" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 248.0
+offset_right = 908.0
+offset_bottom = 322.0
+min_value = 5.0
+max_value = 30.0
+value = 5.0
+script = ExtResource("1_bhvap")
