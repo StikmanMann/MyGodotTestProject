@@ -5,6 +5,9 @@
 [node name="CandySpawner" type="Node3D"]
 script = ExtResource("1_0goun")
 
+[node name="SpawnLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://btcrqd55363s0")
 spawn_path = NodePath("../SpawnLocation")
@@ -19,6 +22,3 @@ size = Vector3(3, 1, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0.25, 2.98023e-08)
 operation = 2
 size = Vector3(2.6, 0.5, 2.6)
-
-[node name="SpawnLocation" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

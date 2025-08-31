@@ -73,14 +73,14 @@ shape = SubResource("CylinderShape3D_qqgab")
 [node name="RotationHelper" type="Node3D" parent="BoundingBox"]
 script = ExtResource("3_1wtpt")
 
+[node name="PickupMP" parent="BoundingBox/RotationHelper" instance=ExtResource("4_t6vuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
 [node name="Camera3D" type="Camera3D" parent="BoundingBox/RotationHelper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 fov = 90.0
 
 [node name="Interact_MP" parent="BoundingBox/RotationHelper" instance=ExtResource("5_t6vuy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="PickupMP" parent="BoundingBox/RotationHelper" instance=ExtResource("4_t6vuy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="ThirdPerson" type="Node3D" parent="BoundingBox"]

@@ -8,16 +8,18 @@ extends Node3D
 @export var hold_distance: float = 3.0       # how far in front of player to hold
 @export var hold_strength: float = 8.0       # how strongly we pull the object toward target
 @export var damping: float = 20.0            # smoothness of movement
-@onready var pickup_ray = $PickupRay
+
+@onready var pickup_ray = %PickupRay
 
 var held_object: RigidBody3D = null
 
+
 func _physics_process(delta: float) -> void:
 	# --- Pickup / Drop toggle ---
-
-	# --- If holding an object, move it toward the target point ---
-	if held_object:
-		_move_held_object(delta)
+	if multiplayer.is_server():
+		# --- If holding an object, move it toward the target point ---
+		if held_object:
+			_move_held_object(delta)
 
 func pickup() -> void:
 	if held_object:

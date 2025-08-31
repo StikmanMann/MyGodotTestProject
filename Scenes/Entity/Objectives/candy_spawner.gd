@@ -1,7 +1,6 @@
 class_name CandySpawner
 extends Node3D
 
-
 @onready var spawn_location = $SpawnLocation
 const CANDY_OBJECTIVE = preload("res://Scenes/Entity/Objectives/candy_objective.tscn")
 
